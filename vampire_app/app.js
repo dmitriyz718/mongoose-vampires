@@ -1,10 +1,24 @@
 // 1. Require Mongoose
-
+const mongoose = require(`mongoose`);
+const connectionString = `mongodb://localhost:27017/mongoosevampires`;
 // 2. Require your Model
-
+const Vampire = require(`./models/vampire`)
 // 3. Require your extra data source
-
+const express = require(`express`);
+const bodyParser = require(`body-parser`);
+const methodOverride = require(`method-override`);
+const app = express();
 // 4. Connect your database
+mongoose.connect(connectionString, {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+})
+    .then(() => {
+        console.log(`Connected to MongoDB`);
+    })
+    .catch(() => console.log(`MongoDB connection failed`));
 
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
