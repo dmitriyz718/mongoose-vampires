@@ -8,7 +8,8 @@ const badGuys = require(`./models/populateVampires`);
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const methodOverride = require(`method-override`);
-const vampireArr = require("./models/populateVampires");
+const vampireArr = require(`./models/populateVampires`);
+const newVamps = require(`./models/newVampires`);
 const app = express();
 // 4. Connect your database
 mongoose.connect(connectionString, {
@@ -29,12 +30,18 @@ mongoose.connect(connectionString, {
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-Vampire.collection.insertMany(vampireArr, (err, data) => {
+/* Vampire.collection.insertMany(vampireArr, (err, data) => {
     console.log("added provided vampire data")
-    mongoose.connection.close();
-});
+    mongoose.connection.close(); // ??wondering what the difference is between connection.close, and proccess.exit??
+}); */
 // ### Add some new vampire data
-
+Vampire.create(newVamps, (err, newVampsMade) => {
+    if (err) console.log(err); // catch error if any
+    // on success:
+    console.log(`New Vamps Added!`);
+    console.log(newVampsMade);
+    process.exit();
+});
 /////////////////////////////////////////////////
 // ## QUERYING
 /////////////////////////////////////////////////
