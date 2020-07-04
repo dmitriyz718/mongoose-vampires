@@ -8,6 +8,7 @@ const badGuys = require(`./models/populateVampires`);
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const methodOverride = require(`method-override`);
+const vampireArr = require("./models/populateVampires");
 const app = express();
 // 4. Connect your database
 mongoose.connect(connectionString, {
@@ -28,7 +29,10 @@ mongoose.connect(connectionString, {
 /////////////////////////////////////////////////
 // INSERT USING MONGOOSE
 // ### Add the vampire data that we gave you
-
+Vampire.collection.insertMany(vampireArr, (err, data) => {
+    console.log("added provided vampire data")
+    mongoose.connection.close();
+});
 // ### Add some new vampire data
 
 /////////////////////////////////////////////////

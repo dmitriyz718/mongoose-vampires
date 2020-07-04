@@ -16,7 +16,8 @@ const vampireSchema = new mongoose.Schema({
     victims: {
         type: Number,
         min: 2
-    }
+    },
+    title: String
 });
 
 const Vampire = mongoose.model('Vampire', vampireSchema);
