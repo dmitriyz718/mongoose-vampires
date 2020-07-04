@@ -4,6 +4,7 @@ const connectionString = `mongodb://localhost:27017/mongoosevampires`;
 // 2. Require your Model
 const Vampire = require(`./models/vampire`)
 // 3. Require your extra data source
+const badGuys = require(`./models/populateVampires`);
 const express = require(`express`);
 const bodyParser = require(`body-parser`);
 const methodOverride = require(`method-override`);
