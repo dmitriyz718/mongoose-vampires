@@ -74,29 +74,47 @@ const vampFn = filter => Vampire.find(filter, (err, foundVamps) => {
 
 // Select all vamps with > 150 & < 500 victims
 
-// vampFn({ victims: { $gt: 150, $lt: 500 } })
+// vampFn({ victims: { $gt: 150, $lt: 500 } });
 
 //worked
 
 /////////////////////////////////////////////////
 // ### Select by exists or does not exist
 // Have a title property
-
+// vampFn({ title: { $exists: true } });
+// works
 // Do not have a victims property
-
+// vampFn({ victims: { $exists: false } });
 // Have a title and no victims
-
+// vampFn({ title: { $exists: true }, victims: { $exists: false } });
 // Have victims and the victim count is > 1000
 
 /////////////////////////////////////////////////
 // ### Select with OR
 // are from NY or NOLA
+/* vampFn({
+    $or: [{ location: { $eq: 'New York, New York, US' } },
+    { location: { $eq: 'New Orleans, Louisiana, US' } }]
+}); */
+// worked
 
 // love brooding or being tragic
+/* vampFn({
+    $or: [{ loves: { $eq: `brooding` } }, { loves: { $eq: `being tragic` } }]
+}); */
+//worked
 
-// have > 1000 victims or love marshmellows
+/* // have > 1000 victims or love marshmallows
+vampFn({
+    $or: [{ victims: { $gt: 1000 } }, { loves: { $eq: `marshmallows` } }]
+}); */
+//worked
 
 // have red or green eyes
+/* vampFn({
+    $or: [{ eye_color: { $eq: `red` } }, { eye_color: { $eq: `green` } }]
+}); */
+// worked
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
