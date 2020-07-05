@@ -188,7 +188,30 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## UPDATE
-
+/* Vampire.findOneAndUpdate({ name: 'Eve' },
+    { $set: { gender: 'm' } },
+    { new: true },
+    (err, editVampire) => {
+        if (err) console.log(err);
+        console.log(editVampire);
+        process.exit();
+    }); */
+/* Vampire.findOneAndUpdate({ name: 'Eve' },
+    { $set: { name: 'moniker' } },
+    { new: true },
+    (err, editVamp) => {
+        if (err) console.log(err);
+        console.log(editVamp);
+        process.exit();
+    }); */
+/* Vampire.updateMany({ gender: 'f' },
+    { $set: { gender: 'fems' } },
+    { new: true },
+    (err, editVamp) => {
+        if (err) console.log(err);
+        console.log(editVamp);
+        process.exit();
+    }); */
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
