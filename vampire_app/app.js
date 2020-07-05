@@ -167,6 +167,10 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 
 //have not killed more than 200 people
 // vampFn({ victims: { $lt: 200 } });
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// ## REPLACE
 /* vampFnDynamic(`findOneAndUpdate`, ({ name: 'Claudia' },
     { $set: { name: 'Eve' } },
     { new: true })); */ // DONT KNOW WHY THIS ISNT WORKING
@@ -180,10 +184,6 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
         console.log(editVampire);
         process.exit();
     }); */
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// ## REPLACE
-
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
