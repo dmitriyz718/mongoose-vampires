@@ -10,6 +10,7 @@ const bodyParser = require(`body-parser`);
 const methodOverride = require(`method-override`);
 const vampireArr = require(`./models/populateVampires`);
 const newVamps = require(`./models/newVampires`);
+const { findOneAndUpdate } = require("./models/vampire");
 const app = express();
 // 4. Connect your database
 mongoose.connect(connectionString, {
@@ -166,10 +167,23 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 
 //have not killed more than 200 people
 // vampFn({ victims: { $lt: 200 } });
+/* vampFnDynamic(`findOneAndUpdate`, ({ name: 'Claudia' },
+    { $set: { name: 'Eve' } },
+    { new: true })); */ // DONT KNOW WHY THIS ISNT WORKING
+// MANUALLY:
+/* Vampire.findOneAndUpdate({ name: 'Claudia' },
+    { $set: { name: 'Eve' } },
+    { new: true },
+    (err, editVampire) => {
+        if (err) console.log(err);
 
+        console.log(editVampire);
+        process.exit();
+    }); */
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REPLACE
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
