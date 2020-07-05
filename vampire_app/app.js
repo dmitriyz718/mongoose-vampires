@@ -215,6 +215,21 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // ## REMOVE
+// Remove a single document wherein the hair_color is 'brown'
+/* Vampire.findOneAndDelete({ hair_color: 'brown' }, (err, delVamp) => {
+    if (err) console.log(err);
+    console.log(delVamp);
+    process.exit();
+}); */
+// We found out that the vampires with the blue eyes were just fakes!
+/* Vampire.deleteMany({ eye_color: 'blue' }, (err, delVamps) => {
+    if (err) console.log(err);
+    console.log(delVamps);
+    process.exit();
+}); */
+
+// Let's remove all the vampires who have blue eyes from our database.
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
