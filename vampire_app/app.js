@@ -91,6 +91,7 @@ const vampFn = filter => Vampire.find(filter, (err, foundVamps) => {
 
 // Have victims and the victim count is > 1000
 // vampFn({ victims: { $gt: 1000 } });
+
 /////////////////////////////////////////////////
 // ### Select with OR
 // are from NY or NOLA
@@ -121,12 +122,26 @@ vampFn({
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
 /*Select all the vampires that:
-love either frilly shirtsleeves or frilly collars
-love brooding
-love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
-love fancy cloaks but not if they also love either top hats or virgin blood *
-Hint-You will also have to use $nin *
-*/
+love either frilly shirtsleeves or frilly collars // use $or for either or and $in to check for values in array */
+// vampFn({ $or: [{ loves: { $in: 'frilly shirtsleeves' } }, { loves: { $in: 'frilly collars' } }] });
+//love brooding
+// vampFn({ loves: { $in: `brooding` } });
+//love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+/* vampFn({
+    $or: [{ loves: { $in: 'appearing innocent' } },
+    { loves: { $in: 'trickery' } },
+    { loves: { $in: 'lurking in rotting mansions' } },
+    { loves: { $in: 'R&B music' } }]
+}); */
+//love fancy cloaks but not if they also love either top hats or virgin blood *
+//Hint-You will also have to use $nin *
+/* vampFn({
+    $and: [{ loves: { $in: 'fancy cloaks' } },
+    {
+        $and: [{ loves: { $nin: 'top hats' } },
+        { loves: { $nin: 'virgin blood' } }]
+    }]
+}); */
 
 /////////////////////////////////////////////////
 //### Negative Selection
