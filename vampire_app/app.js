@@ -30,7 +30,13 @@ const vampFn = filter => Vampire.find(filter, (err, foundVamps) => {
     console.log(foundVamps);
     process.exit();
 });
+// setting property to someothing other than .find when for example updating or deleting
+const vampFnDynamic = (key, filter) => Vampire[key](filter, (err, foundVamps) => {
+    if (err) console.log(err);
 
+    console.log(foundVamps);
+    process.exit();
+});
 /////////////////////////////////////////////////
 //Write your answers to add, query, update, remove, and Hungry for More below.
 
@@ -135,13 +141,13 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 }); */
 //love fancy cloaks but not if they also love either top hats or virgin blood *
 //Hint-You will also have to use $nin *
-/* vampFn({
+vampFn({
     $and: [{ loves: { $in: 'fancy cloaks' } },
     {
         $and: [{ loves: { $nin: 'top hats' } },
         { loves: { $nin: 'virgin blood' } }]
     }]
-}); */
+});
 
 /////////////////////////////////////////////////
 //### Negative Selection
