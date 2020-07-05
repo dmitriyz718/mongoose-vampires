@@ -23,7 +23,7 @@ mongoose.connect(connectionString, {
     })
     .catch(() => console.log(`MongoDB connection failed`));
 
-// dry code functions, not about to retype this for all that down there...
+// dry code function, not about to retype this for all that down there...
 const vampFn = filter => Vampire.find(filter, (err, foundVamps) => {
     if (err) console.log(err);
 
@@ -82,13 +82,15 @@ const vampFn = filter => Vampire.find(filter, (err, foundVamps) => {
 // ### Select by exists or does not exist
 // Have a title property
 // vampFn({ title: { $exists: true } });
-// works
+
 // Do not have a victims property
 // vampFn({ victims: { $exists: false } });
+
 // Have a title and no victims
 // vampFn({ title: { $exists: true }, victims: { $exists: false } });
-// Have victims and the victim count is > 1000
 
+// Have victims and the victim count is > 1000
+// vampFn({ victims: { $gt: 1000 } });
 /////////////////////////////////////////////////
 // ### Select with OR
 // are from NY or NOLA
@@ -118,6 +120,13 @@ vampFn({
 
 /////////////////////////////////////////////////
 //### Select objects that match one of several values
+/*Select all the vampires that:
+love either frilly shirtsleeves or frilly collars
+love brooding
+love at least one of the following: appearing innocent, trickery, lurking in rotting mansions, R&B music
+love fancy cloaks but not if they also love either top hats or virgin blood *
+Hint-You will also have to use $nin *
+*/
 
 /////////////////////////////////////////////////
 //### Negative Selection
