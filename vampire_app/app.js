@@ -141,16 +141,31 @@ love either frilly shirtsleeves or frilly collars // use $or for either or and $
 }); */
 //love fancy cloaks but not if they also love either top hats or virgin blood *
 //Hint-You will also have to use $nin *
-vampFn({
+/* vampFn({
     $and: [{ loves: { $in: 'fancy cloaks' } },
     {
         $and: [{ loves: { $nin: 'top hats' } },
         { loves: { $nin: 'virgin blood' } }]
     }]
-});
+}); */
 
 /////////////////////////////////////////////////
 //### Negative Selection
+//love ribbons but do not have brown eyes
+// vampFn({ $and: [{ loves: { $in: 'ribbons' } }, { eye_color: { $ne: 'brown' } }] });
+
+//are not from Rome
+// vampFn({ location: { $ne: 'Rome, Italy' } });
+
+//do not love any of the following: [fancy cloaks, frilly shirtsleeves, appearing innocent, being tragic, brooding]
+/* vampFn({
+    $and: [{ loves: { $nin: 'fancy cloaks' } }, { loves: { $nin: 'frilly shirtsleeves' } },
+    { loves: { $nin: 'appearing innocent' } }, { loves: { $nin: 'being tragic' } },
+    { loves: { $nin: 'brooding' } }]
+}); */
+
+//have not killed more than 200 people
+// vampFn({ victims: { $lt: 200 } });
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
